@@ -25,7 +25,13 @@ Request access to the dataset at [https://dcapswoz.ict.usc.edu/](https://dcapswo
 
 ### 2. Prepare `training/labels.csv`
 
-The CSV must contain at least a `Participant_ID` column. The file provided with the dataset (`train_split_Depression_AVEC2017.csv` or similar) can be used directly. See `labels.csv.example` for the expected format.
+The CSV must contain at least a `Participant_ID` column. The file provided with the dataset (`train_split_Depression_AVEC2017.csv` or similar) can be used directly.
+
+A sample file is included as `labels.csv.example` — copy and rename it as a starting point:
+
+```bash
+cp labels.csv.example training/labels.csv
+```
 
 ```
 training/
@@ -72,5 +78,5 @@ training/
 
 ## Notes
 
-- SSL certificate verification is disabled in the script (`ssl._create_unverified_context`). This may be required depending on the server configuration.
+- **SSL warning:** Certificate verification is explicitly disabled in the script (`ssl._create_unverified_context`). This is an intentional workaround for the DAIC-WOZ download server, but it is a security risk — it makes the connection vulnerable to man-in-the-middle attacks. Do not reuse this pattern in other contexts.
 - The `training/labels.csv` file is listed in `.gitignore` and should not be committed to the repository.

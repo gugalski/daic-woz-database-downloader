@@ -1,6 +1,6 @@
 # DAIC-WOZ Database Downloader
 
-[![USC ICT](https://ict.usc.edu/wp-content/uploads/2021/12/ICT-Logo-Full.svg)](https://dcapswoz.ict.usc.edu/)
+<a href="https://dcapswoz.ict.usc.edu/"><img src="https://ict.usc.edu/wp-content/uploads/2021/12/ICT-Logo-Full.svg" width="75%"></a>
 
 A script for batch-downloading audio files from the [DAIC-WOZ](https://dcapswoz.ict.usc.edu/) (Distress Analysis Interview Corpus – Wizard of Oz) database, a dataset used for depression and distress analysis research.
 

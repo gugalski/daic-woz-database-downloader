@@ -18,15 +18,11 @@ def validate_config():
         errors.append("BASE_URL is not set. Open download_files.py and set BASE_URL to the download server address.")
 
     if not os.path.exists(LABELS_CSV):
-        errors.append(
-            f"Labels file not found: {LABELS_CSV}\n"
-            f"  Copy labels.csv.example to {LABELS_CSV} and fill it with participant data."
-        )
+        errors.append(f"Labels file not found: {LABELS_CSV}. Copy labels.csv.example to {LABELS_CSV} and fill it with participant data.")
 
     if errors:
-        print("[x] Configuration errors:\n")
         for err in errors:
-            print(f"  - {err}")
+            print(f"[x] {err}")
         sys.exit(1)
 
 
@@ -39,7 +35,7 @@ def load_labels():
 
     if "Participant_ID" not in df.columns:
         print(f"[x] Column 'Participant_ID' not found in {LABELS_CSV}.")
-        print(f"    Available columns: {', '.join(df.columns)}")
+        print(f"[x] Available columns: {', '.join(df.columns)}")
         sys.exit(1)
 
     if df.empty:
@@ -57,12 +53,12 @@ def download_participant(pid, i, total):
     extract_dir = os.path.join(OUTPUT_DIR, f"{pid}_P")
 
     if os.path.exists(audio_dest):
-        print(f"[{i}/{total}] Skip {pid} — already exists")
+        print(f"[{i}/{total}] [-] {pid} — already exists")
         return True
 
     url = f"{BASE_URL}/{zip_name}"
     try:
-        print(f"[{i}/{total}] Downloading {zip_name} ...", flush=True)
+        print(f"[{i}/{total}] [>] Downloading {zip_name} ...", flush=True)
         urllib.request.urlretrieve(url, zip_path)
     except urllib.error.HTTPError as e:
         print(f"[{i}/{total}] [x] HTTP {e.code} for {pid}: {e.reason}")
@@ -130,7 +126,7 @@ def main():
         else:
             failed += 1
 
-    print(f"\n[v] Done — {ok} ok, {failed} failed out of {total} participants.")
+    print(f"\n[v] Done: {ok} ok, {failed} failed, {total} total.")
     if failed:
         sys.exit(1)
 

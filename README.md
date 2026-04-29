@@ -8,15 +8,6 @@ The script reads a list of participant IDs from `training/labels.csv`, downloads
 
 Files that already exist locally are skipped, so the script is safe to re-run after interruptions.
 
-## Prerequisites
-
-- Python 3
-- `pandas`
-
-```bash
-pip install pandas
-```
-
 ## Setup
 
 ### 1. Obtain access to DAIC-WOZ
@@ -55,13 +46,11 @@ python download_files.py
 Progress is printed for each participant:
 
 ```
-[1/107] Downloading 300_P.zip ...
-[1/107] [v] Archive extracted into ./training/files/300_P
-[1/107] [v] Moved: ./training/files/300_AUDIO.wav
-[1/107] [v] Clean
-[2/107] Ignore 301 — files exists
+[1/107] [>] Downloading 300_P.zip ...
+[1/107] [v] training/files/300_AUDIO.wav
+[2/107] [-] 301 — already exists
 ...
-[v] Done!
+[v] Done: 106 ok, 0 failed, 107 total.
 ```
 
 ## Output
@@ -75,6 +64,18 @@ training/
     ├── 301_AUDIO.wav
     └── ...
 ```
+
+## Attribution
+
+The DAIC-WOZ dataset was created by the **USC Institute for Creative Technologies**. Use of this dataset requires a signed Data Use Agreement and proper citation of the source.
+
+If you use this dataset in your work, you must cite:
+
+> Gratch, J., Artstein, R., Lucas, G., Stratou, G., Scherer, S., Nazarian, A., Wood, R., Mediati, N., Fromm, J., & Morency, L.-P. (2014).
+> *The Distress Analysis Interview Corpus of human and computer interviews.*
+> In Proceedings of the Language Resources and Evaluation Conference (LREC), pp. 3123–3128.
+
+More information and access requests: [https://dcapswoz.ict.usc.edu/](https://dcapswoz.ict.usc.edu/)
 
 ## Notes
 
